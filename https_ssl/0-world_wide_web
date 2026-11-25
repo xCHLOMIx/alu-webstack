@@ -8,4 +8,11 @@ function doit ()
 	echo $(dig "web-02.$1" | grep -A1 'ANSWER SECTION:' | awk 'NR == 2 {print "The subdomain web-02 is a " $4 " record and points to " $5}')
 }
 
-doit $1;
+if [ $2 == "" ]
+then
+	doit $1;
+else
+	test=$2
+	echo $test
+	echo $(dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk -v test="$test" 'NR == 2 {print "The subdomain " test " is a " $4 " record and points to " $5}')
+fi
