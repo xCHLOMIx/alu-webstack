@@ -1,0 +1,8 @@
+backend def_backend
+        balance roundrobin
+        server web1 16.61.222.48
+        server web2 13.40.98.188
+frontend def_frontend
+        bind *:80
+        bind *:443 ssl crt /key_comb.pem
+        default_backend def_backend
