@@ -3,7 +3,7 @@
 function doit ()
 {
 	echo $(dig "www.$1" | grep -A1 'ANSWER SECTION:' | awk 'NR == 2 {print "The subdomain www is a " $4 " record and points to " $5}')
-	echo $(dig "lb-01.$1" | grep -A1 'ANSWER SECTION:' | awk 'NR == 2 {print "The subdomain lb is a " $4 " record and points to " $5}')
+	echo $(dig "lb-01.$1" | grep -A1 'ANSWER SECTION:' | awk 'NR == 2 {print "The subdomain lb-01 is a " $4 " record and points to " $5}')
 	echo $(dig "web-01.$1" | grep -A1 'ANSWER SECTION:' | awk 'NR == 2 {print "The subdomain web-01 is a " $4 " record and points to " $5}')
 	echo $(dig "web-02.$1" | grep -A1 'ANSWER SECTION:' | awk 'NR == 2 {print "The subdomain web-02 is a " $4 " record and points to " $5}')
 }
